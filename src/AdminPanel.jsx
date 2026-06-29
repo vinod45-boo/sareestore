@@ -96,7 +96,7 @@ export default function AdminPanel({ onLogout }) {
       // ── EDIT: update locally + call backend PUT ──
       setProducts(ps => ps.map(p => p.id === data.id ? { ...p, ...data } : p));
       try {
-        await fetch(`http://localhost:5000/products/${data.id}`, {
+        await fetch(`https://weavers-backend.onrender.com/products/${data.id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -116,7 +116,7 @@ export default function AdminPanel({ onLogout }) {
       const newP = { ...data, id: Date.now(), rating: 4.5, reviews: 0, stock: parseInt(data.stock) || 10 };
       setProducts(ps => [...ps, newP]);
       try {
-        const res = await fetch("http://localhost:5000/add-product", {
+        const res = await fetch("https://weavers-backend.onrender.com/add-product", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -146,7 +146,7 @@ export default function AdminPanel({ onLogout }) {
     setProducts(ps => ps.filter(p => p.id !== id));
     setDelConfirm(null);
     try {
-      await fetch(`http://localhost:5000/products/${id}`, { method: "DELETE" });
+      await fetch(`https://weavers-backend.onrender.com/products/${id}`, { method: "DELETE" });
     } catch (err) {
       console.warn("Backend delete failed (running locally):", err.message);
     }
@@ -182,7 +182,7 @@ export default function AdminPanel({ onLogout }) {
 
   // ── Load products from MongoDB on mount ──
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://weavers-backend.onrender.com/products")
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data) && data.length > 0) {

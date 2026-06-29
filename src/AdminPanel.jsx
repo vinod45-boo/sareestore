@@ -91,22 +91,65 @@ export default function AdminPanel({ onLogout }) {
   }
 
   /* ── product CRUD ── */
-  function saveProduct(data) {
+  async function saveProduct(data) {
     if (data.id) {
+      // ── EDIT: update locally + call backend PUT ──
       setProducts(ps => ps.map(p => p.id === data.id ? { ...p, ...data } : p));
+      try {
+        await fetch(`http://localhost:5000/products/${data.id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: data.name,
+            price: parseInt(data.price),
+            image: data.img,
+            description: data.desc || "",
+            category: data.occasion || "",
+          }),
+        });
+      } catch (err) {
+        console.warn("Backend update failed (running locally):", err.message);
+      }
       showToast("Product updated successfully!");
     } else {
+      // ── ADD: call backend POST /add-product ──
       const newP = { ...data, id: Date.now(), rating: 4.5, reviews: 0, stock: parseInt(data.stock) || 10 };
       setProducts(ps => [...ps, newP]);
-      showToast("Product added successfully!");
+      try {
+        const res = await fetch("http://localhost:5000/add-product", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: data.name,
+            price: parseInt(data.price),
+            image: data.img,
+            description: data.desc || "",
+            category: data.occasion || "",
+          }),
+        });
+        const result = await res.json();
+        if (result.success) {
+          showToast("✅ Product saved to database!");
+        } else {
+          showToast("⚠️ Saved locally. DB: " + result.message, "warn");
+        }
+      } catch (err) {
+        console.warn("Backend not reachable (running locally only):", err.message);
+        showToast("Product added! (Backend offline)", "warn");
+      }
     }
     setAddOpen(false);
     setEditProd(null);
   }
 
-  function deleteProduct(id) {
+  async function deleteProduct(id) {
     setProducts(ps => ps.filter(p => p.id !== id));
     setDelConfirm(null);
+    try {
+      await fetch(`http://localhost:5000/products/${id}`, { method: "DELETE" });
+    } catch (err) {
+      console.warn("Backend delete failed (running locally):", err.message);
+    }
     showToast("Product removed.", "warn");
   }
 
@@ -136,6 +179,33 @@ export default function AdminPanel({ onLogout }) {
     { key: "weavers",   icon: "◎", label: "Weavers" },
     { key: "analytics", icon: "◇", label: "Analytics" },
   ];
+
+  // ── Load products from MongoDB on mount ──
+  useEffect(() => {
+    fetch("http://localhost:5000/products")
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data) && data.length > 0) {
+          // Map backend fields to AdminPanel fields
+          const mapped = data.map(p => ({
+            id: p._id,
+            name: p.name,
+            fabric: p.category || "Handloom silk",
+            price: p.price,
+            old: Math.round(p.price * 1.25),
+            rating: 4.5,
+            reviews: 0,
+            stock: 10,
+            occasion: p.category || "Festive",
+            tags: [],
+            img: p.image,
+            desc: p.description || "",
+          }));
+          setProducts(prev => [...INIT_PRODUCTS, ...mapped]);
+        }
+      })
+      .catch(err => console.warn("Backend not reachable, using local data:", err.message));
+  }, []);
 
   const STATUS_COLOR = {
     Delivered:  "#4ade80", Shipped: "#60a5fa",
@@ -1095,7 +1165,6 @@ function ProductModal({ product, onSave, onClose }) {
           <label className="ap-form-label">Description</label>
           <textarea className="ap-form-input" rows={3} value={form.desc} onChange={e => set("desc", e.target.value)} placeholder="A brief description of the saree…" style={{ resize: "vertical" }} />
         </div>
-
         <div style={{ display: "flex", gap: 10, marginTop: 6 }}>
           <button className="ap-btn ap-btn-ghost" style={{ flex: 1 }} onClick={onClose}>Cancel</button>
           <button className="ap-btn ap-btn-gold" style={{ flex: 1 }} onClick={handleSave}>

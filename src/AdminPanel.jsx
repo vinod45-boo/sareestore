@@ -458,11 +458,12 @@ export default function AdminPanel({ onLogout }) {
         }
         @keyframes apFadeIn { from { opacity:0; } to { opacity:1; } }
         .ap-modal {
-          background: #130b10; border: 1px solid var(--border);
+          background: linear-gradient(145deg, #07112b 0%, #0d1f4a 60%, #0a1835 100%);
+          border: 1px solid rgba(148,186,255,0.25);
           border-radius: 14px; padding: 30px; width: 500px; max-height: 80vh;
           overflow-y: auto; position: relative;
           animation: apModalIn 0.35s cubic-bezier(0.16,1,0.3,1);
-          box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,168,76,0.1);
+          box-shadow: 0 40px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(148,186,255,0.08), inset 0 1px 0 rgba(200,220,255,0.07);
         }
         @keyframes apModalIn { from { opacity:0; transform:scale(0.9) translateY(20px); } to { opacity:1; transform:scale(1) translateY(0); } }
         .ap-modal-title {

@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 
-const PRODUCTS = [
+const SEED_PRODUCTS = [
   { id: 1, name: "Kanchi Crimson Kanjivaram", fabric: "Pure mulberry silk · Kanchipuram", price: 12499, old: 15999, rating: 4.8, reviews: 124, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlU5Ui1aSWgF4BnPRMM9mqF3xDEQ9q7un2atwNuUtV4w&s=10", desc: "A temple-bordered Kanjivaram in deep crimson, threaded with 22-karat zari motifs along the pallu. Woven over twelve days by a single weaver family.", tags: ["Pure silk", "Zari border", "Bridal"], sizes: ["5.5m", "6m", "6.5m"], colors: ["Crimson", "Maroon", "Deep Red"], blouse: true, occasion: "Bridal", },
   { id: 2, name: "Banaras Emerald Weave", fabric: "Katan silk · Varanasi", price: 15999, old: 19499, rating: 4.7, reviews: 89, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrJR9-BKBhIb-KjHlWkcCoT9CXzfc422HS7qQelXSB_Q&s=10", desc: "Hand-loomed on a jacquard pit-loom, this emerald Banarasi carries the classic mughal buta motif in fine gold thread across its body.", tags: ["Handloom", "Jacquard", "Festive"], sizes: ["5.5m", "6m"], colors: ["Emerald", "Forest Green"], blouse: true, occasion: "Festive", },
   { id: 3, name: "Mysore Royal Blue", fabric: "Mysore silk · Karnataka", price: 9499, old: 11999, rating: 4.6, reviews: 67, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVIaUYMIwSKiVcqDQ2tCU7orE-nNslPyITZHSIqFEm0w&s=10", desc: "Lightweight Mysore silk in royal blue with a slim gold zari border — soft drape, ideal for daylong wear at office or temple visits.", tags: ["Lightweight", "Everyday silk"], sizes: ["5.5m", "6m", "6.5m"], colors: ["Royal Blue", "Navy"], blouse: false, occasion: "Casual", },
@@ -147,6 +147,37 @@ function LetterByLetter({ text, delay = 0, className = "", style = {} }) {
 
 export default function SareeStore({ onGoToHome }) {
   const [page, setPage] = useState("home");
+  const [PRODUCTS, setPRODUCTS] = useState(SEED_PRODUCTS);
+
+  // ── Load products from MongoDB backend on mount ──
+  useEffect(() => {
+    fetch("https://weavers-backend.onrender.com/products")
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data) && data.length > 0) {
+          const mapped = data.map((p, i) => ({
+            id: p._id,
+            name: p.name,
+            fabric: p.category || "Handloom silk",
+            price: p.price,
+            old: Math.round(p.price * 1.25),
+            rating: 4.5,
+            reviews: 0,
+            img: p.image,
+            desc: p.description || "A beautiful handwoven saree from our collection.",
+            tags: p.category ? [p.category] : ["New Arrival"],
+            sizes: ["5.5m", "6m", "6.5m"],
+            colors: ["As shown"],
+            blouse: true,
+            occasion: p.category || "Festive",
+          }));
+          // Combine: backend products first, then seed catalogue
+          setPRODUCTS([...mapped, ...SEED_PRODUCTS]);
+        }
+      })
+      .catch(err => console.warn("Backend not reachable, showing local catalogue:", err.message));
+  }, []);
+
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [activeProduct, setActiveProduct] = useState(null);
   const [qty, setQty] = useState(1);

@@ -1362,7 +1362,7 @@ function ProductModal({ product, onSave, onClose }) {
       formData.append("image", file);
 
       // 👉 Replace YOUR_IMGBB_API_KEY with your free key from https://api.imgbb.com/
-      const IMGBB_API_KEY = "YOUR_IMGBB_API_KEY";
+      const IMGBB_API_KEY = "6fc53a7c71ce8d6fc6b9521d9582a649";
 
       const res = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
         method: "POST",

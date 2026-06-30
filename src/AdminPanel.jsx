@@ -17,14 +17,14 @@ const INIT_PRODUCTS = [
 ];
 
 const INIT_ORDERS = [
-  { id: "ORD-0041", customer: "Priya Sharma",    product: "Kanchi Crimson Kanjivaram",  amount: 12499, status: "Delivered",  date: "22 Jun 2026" },
-  { id: "ORD-0040", customer: "Meena Reddy",     product: "Patola Sunset Ikat",         amount: 18999, status: "Shipped",    date: "23 Jun 2026" },
-  { id: "ORD-0039", customer: "Anita Rao",       product: "Banarasi Rani Pink",         amount: 13999, status: "Processing", date: "24 Jun 2026" },
-  { id: "ORD-0038", customer: "Kavitha Iyer",    product: "Paithani Peacock Teal",      amount: 16499, status: "Delivered",  date: "21 Jun 2026" },
-  { id: "ORD-0037", customer: "Sunita Pillai",   product: "Banaras Emerald Weave",      amount: 15999, status: "Cancelled",  date: "20 Jun 2026" },
-  { id: "ORD-0036", customer: "Radha Krishnan",  product: "Organza Blush Pearl",        amount: 6499,  status: "Delivered",  date: "19 Jun 2026" },
-  { id: "ORD-0035", customer: "Deepa Nair",      product: "Chanderi Ivory Blossom",     amount: 4299,  status: "Shipped",    date: "24 Jun 2026" },
-  { id: "ORD-0034", customer: "Lakshmi Menon",   product: "Kanjivaram Sandal Gold",     amount: 14999, status: "Processing", date: "25 Jun 2026" },
+  { id: "ORD-0041", customer: "Priya Sharma",    product: "Kanchi Crimson Kanjivaram",  amount: 12499, status: "Delivered",  date: "22 Jun 2026", items: [{ name: "Kanchi Crimson Kanjivaram", price: 12499, qty: 1, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlU5Ui1aSWgF4BnPRMM9mqF3xDEQ9q7un2atwNuUtV4w&s=10" }], address: "12 Lake View Road, Chennai - 600028", city: "Chennai" },
+  { id: "ORD-0040", customer: "Meena Reddy",     product: "Patola Sunset Ikat",         amount: 18999, status: "Shipped",    date: "23 Jun 2026", items: [{ name: "Patola Sunset Ikat", price: 18999, qty: 1, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCUBjdi18WFyTpejxpzCC5W7SF-ykOZCtC1CvVp6GX3Q&s=10" }], address: "45 Jubilee Hills, Hyderabad - 500033", city: "Hyderabad" },
+  { id: "ORD-0039", customer: "Anita Rao",       product: "Banarasi Rani Pink",         amount: 13999, status: "Processing", date: "24 Jun 2026", items: [{ name: "Banarasi Rani Pink", price: 13999, qty: 1, image: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ7ENkWIBbgHKx-Lp9k6_LHZRG9Uu7b6jAp8BtUXIHMSbUNXSbnOv5M8NPrAS4dDN9ZPwZ9gL7-HAsvYNi4pkMAAqV7I2ZD5T5HkciQozPx4AIJL_6HazNcaQ&usqp=CAc" }], address: "8 MG Road, Bengaluru - 560001", city: "Bengaluru" },
+  { id: "ORD-0038", customer: "Kavitha Iyer",    product: "Paithani Peacock Teal",      amount: 16499, status: "Delivered",  date: "21 Jun 2026", items: [{ name: "Paithani Peacock Teal", price: 16499, qty: 1, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNTgKoBmfUYo_HBcmxlIjBpCnyBMuydVV92zkoa3iJQw&s" }], address: "23 Anna Nagar, Chennai - 600040", city: "Chennai" },
+  { id: "ORD-0037", customer: "Sunita Pillai",   product: "Banaras Emerald Weave",      amount: 15999, status: "Cancelled",  date: "20 Jun 2026", items: [{ name: "Banaras Emerald Weave", price: 15999, qty: 1, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrJR9-BKBhIb-KjHlWkcCoT9CXzfc422HS7qQelXSB_Q&s=10" }], address: "67 Marine Drive, Mumbai - 400002", city: "Mumbai" },
+  { id: "ORD-0036", customer: "Radha Krishnan",  product: "Organza Blush Pearl",        amount: 6499,  status: "Delivered",  date: "19 Jun 2026", items: [{ name: "Organza Blush Pearl", price: 6499, qty: 1, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQODm1cwEpiB0nOYltpvNOCOXaO99n7z1ud4JqrJ3YemQ&s=10" }], address: "5 Salt Lake, Kolkata - 700064", city: "Kolkata" },
+  { id: "ORD-0035", customer: "Deepa Nair",      product: "Chanderi Ivory Blossom",     amount: 4299,  status: "Shipped",    date: "24 Jun 2026", items: [{ name: "Chanderi Ivory Blossom", price: 4299, qty: 1, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOpBEOAXSmb0hmrxDklTcvfSWKdVZT5hDGVixduw763A&s" }], address: "19 Banjara Hills, Hyderabad - 500034", city: "Hyderabad" },
+  { id: "ORD-0034", customer: "Lakshmi Menon",   product: "Kanjivaram Sandal Gold",     amount: 14999, status: "Processing", date: "25 Jun 2026", items: [{ name: "Kanjivaram Sandal Gold", price: 14999, qty: 1, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMfe2xCvZWD0H25VVE134Jl9KFc2mndpPeHZH7AfVTYQ&s=10" }], address: "31 Koramangala, Bengaluru - 560034", city: "Bengaluru" },
 ];
 
 const INIT_WEAVERS = [
@@ -82,6 +82,7 @@ export default function AdminPanel({ onLogout }) {
   const [delConfirm, setDelConfirm] = useState(null);
   const [search, setSearch]     = useState("");
   const [orderFilter, setOrderFilter] = useState("All");
+  const [expandedOrder, setExpandedOrder] = useState(null);
 
 
 
@@ -153,9 +154,18 @@ export default function AdminPanel({ onLogout }) {
     showToast("Product removed.", "warn");
   }
 
-  function updateOrderStatus(id, status) {
+  async function updateOrderStatus(id, status) {
     setOrders(os => os.map(o => o.id === id ? { ...o, status } : o));
     showToast(`Order ${id} marked as ${status}.`);
+    try {
+      await fetch(`https://weavers-backend.onrender.com/orders/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status }),
+      });
+    } catch (err) {
+      console.warn("Backend order update failed (running locally):", err.message);
+    }
   }
 
   /* ── derived stats ── */
@@ -205,6 +215,30 @@ export default function AdminPanel({ onLogout }) {
         }
       })
       .catch(err => console.warn("Backend not reachable, using local data:", err.message));
+  }, []);
+
+  // ── Load orders from MongoDB on mount ──
+  useEffect(() => {
+    fetch("https://weavers-backend.onrender.com/orders")
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data) && data.length > 0) {
+          const mapped = data.map(o => ({
+            id: o._id,
+            customer: o.customerName,
+            product: o.items?.map(it => it.name).join(", ") || "—",
+            items: o.items || [],
+            amount: o.amount,
+            status: o.status,
+            address: o.address || "",
+            city: o.city || "",
+            date: o.orderDate ? new Date(o.orderDate).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" }) : "—",
+          }));
+          // Real backend orders first, then keep sample orders for visual reference
+          setOrders([...mapped, ...INIT_ORDERS]);
+        }
+      })
+      .catch(err => console.warn("Orders backend not reachable, using sample data:", err.message));
   }, []);
 
   const STATUS_COLOR = {
@@ -458,32 +492,145 @@ export default function AdminPanel({ onLogout }) {
         }
         @keyframes apFadeIn { from { opacity:0; } to { opacity:1; } }
         .ap-modal {
-          background: linear-gradient(145deg, #07112b 0%, #0d1f4a 60%, #0a1835 100%);
-          border: 1px solid rgba(148,186,255,0.25);
+          background: linear-gradient(145deg, #1a1108 0%, #2b1d0d 60%, #1f1409 100%);
+          border: 1px solid rgba(201,168,76,0.35);
           border-radius: 14px; padding: 30px; width: 500px; max-height: 80vh;
           overflow-y: auto; position: relative;
           animation: apModalIn 0.35s cubic-bezier(0.16,1,0.3,1);
-          box-shadow: 0 40px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(148,186,255,0.08), inset 0 1px 0 rgba(200,220,255,0.07);
+          box-shadow: 0 40px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,168,76,0.12), inset 0 1px 0 rgba(232,201,122,0.08);
         }
         @keyframes apModalIn { from { opacity:0; transform:scale(0.9) translateY(20px); } to { opacity:1; transform:scale(1) translateY(0); } }
         .ap-modal-title {
           font-family:'Playfair Display',serif; font-size:1.3rem;
-          color: var(--gold-light); margin-bottom: 22px;
+          color: #E8C97A !important; margin-bottom: 22px;
           display: flex; justify-content: space-between; align-items: center;
         }
+        .ap-modal-title span { color: #E8C97A !important; }
         .ap-modal-close { background: none; border: none; color: var(--text-dim); font-size: 1.2rem; cursor: pointer; }
-        .ap-modal-close:hover { color: var(--text); }
+        .ap-modal-close:hover { color: var(--gold-light); }
 
         .ap-form-row { margin-bottom: 16px; }
-        .ap-form-label { display: block; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px; }
+        .ap-form-label { display: block; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #C0C0C0; margin-bottom: 6px; }
         .ap-form-input {
           width: 100%; padding: 10px 13px;
-          background: rgba(255,255,255,0.04); border: 1px solid var(--border);
-          border-radius: 6px; color: var(--text); font-size: 0.85rem;
-          font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.2s;
+          background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.25);
+          border-radius: 6px; color: #f0e8d8 !important; font-size: 0.85rem;
+          font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.2s, background 0.2s;
         }
-        .ap-form-input:focus { border-color: var(--gold); }
+        .ap-form-input:focus { border-color: var(--gold); background: rgba(201,168,76,0.1); }
+        .ap-form-input::placeholder { color: rgba(240,232,216,0.35); }
+        select.ap-form-input { color: var(--text); }
+        select.ap-form-input option { background: #1a1108; color: var(--text); }
         .ap-form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        /* ─── ORDER CARDS (Amazon-style) ─── */
+        .ap-order-card {
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-radius: 12px;
+          overflow: hidden;
+          backdrop-filter: blur(12px);
+          transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .ap-order-card:hover { border-color: rgba(201,168,76,0.35); box-shadow: 0 8px 28px rgba(0,0,0,0.25); }
+
+        .ap-order-header {
+          display: flex; justify-content: space-between; align-items: center;
+          padding: 12px 20px;
+          background: rgba(201,168,76,0.06);
+          border-bottom: 1px solid var(--border);
+        }
+        .ap-order-header-left { display: flex; flex-direction: column; gap: 2px; }
+        .ap-order-id { font-size: 0.85rem; font-weight: 700; color: var(--gold-light); letter-spacing: 0.04em; }
+        .ap-order-date { font-size: 0.7rem; color: var(--text-dim); }
+
+        .ap-order-body {
+          display: flex; align-items: center; gap: 16px;
+          padding: 16px 20px; cursor: pointer;
+        }
+        .ap-order-thumbs { display: flex; gap: 6px; flex-shrink: 0; }
+        .ap-order-thumb {
+          width: 52px; height: 52px; border-radius: 8px; object-fit: cover;
+          border: 1px solid var(--border); background: var(--surface2);
+        }
+        .ap-order-thumb-fallback { display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+        .ap-order-thumb-more {
+          display: flex; align-items: center; justify-content: center;
+          font-size: 0.72rem; color: var(--gold); font-weight: 700;
+        }
+        .ap-order-info { flex: 1; min-width: 0; }
+        .ap-order-product-line {
+          font-size: 0.85rem; color: var(--text); margin-bottom: 4px;
+          overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+        }
+        .ap-order-customer-line { font-size: 0.75rem; }
+        .ap-order-amount { font-size: 1rem; font-weight: 700; color: var(--gold-light); white-space: nowrap; }
+        .ap-order-expand-btn {
+          background: none; border: 1px solid var(--border); color: var(--text-dim);
+          width: 28px; height: 28px; border-radius: 6px; cursor: pointer; font-size: 0.7rem;
+          transition: all 0.2s; flex-shrink: 0;
+        }
+        .ap-order-expand-btn:hover { color: var(--gold); border-color: var(--gold); }
+
+        .ap-order-tracker {
+          display: flex; align-items: center;
+          padding: 4px 28px 18px;
+        }
+        .ap-order-tracker-step { display: flex; align-items: center; flex: 1; }
+        .ap-order-tracker-step:last-child { flex: 0; }
+        .ap-order-tracker-dot {
+          width: 22px; height: 22px; border-radius: 50%;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 0.65rem; font-weight: 700;
+          background: var(--surface2); color: var(--text-dim);
+          border: 1px solid var(--border); flex-shrink: 0;
+          transition: all 0.3s;
+        }
+        .ap-order-tracker-dot.done { background: var(--gold); color: #0a0608; border-color: var(--gold); }
+        .ap-order-tracker-label {
+          font-size: 0.68rem; color: var(--text-dim); margin-left: 6px; margin-right: 10px;
+          white-space: nowrap;
+        }
+        .ap-order-tracker-label.done { color: var(--gold-light); }
+        .ap-order-tracker-line {
+          flex: 1; height: 2px; background: var(--border); min-width: 20px;
+        }
+        .ap-order-tracker-line.done { background: var(--gold); }
+
+        .ap-order-cancelled-bar {
+          padding: 10px 20px 16px;
+          font-size: 0.78rem; color: var(--red); font-weight: 600;
+        }
+
+        .ap-order-expanded {
+          border-top: 1px solid var(--border);
+          padding: 18px 20px;
+          background: rgba(0,0,0,0.15);
+          animation: apFadeIn 0.25s ease;
+        }
+        .ap-order-expanded-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; }
+        .ap-order-expanded-label {
+          font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+          color: var(--gold); margin-bottom: 10px; font-weight: 600;
+        }
+        .ap-order-item-row {
+          display: flex; align-items: center; gap: 12px;
+          padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .ap-order-item-row:last-child { border-bottom: none; }
+        .ap-order-item-img {
+          width: 44px; height: 44px; border-radius: 6px; object-fit: cover;
+          border: 1px solid var(--border); flex-shrink: 0;
+        }
+        .ap-order-status-select {
+          width: 100%; padding: 9px 12px;
+          background: #1a1108; border: 1px solid var(--border);
+          color: #f0e8d8; border-radius: 6px; font-size: 0.8rem; cursor: pointer;
+        }
+        @media (max-width: 700px) {
+          .ap-order-expanded-grid { grid-template-columns: 1fr; }
+          .ap-order-tracker-label { display: none; }
+        }
 
         /* ─── STOCK badge colors ─── */
         .stock-ok  { color: var(--green); }
@@ -841,48 +988,147 @@ export default function AdminPanel({ onLogout }) {
             <>
               <div className="ap-page-title">Orders</div>
               <div className="ap-page-sub">Track and manage customer orders</div>
+
+              <div className="ap-stats" style={{ gridTemplateColumns: "repeat(4,1fr)" }}>
+                {[
+                  { label: "Total Orders", raw: orders.length, glow: "#C9A84C" },
+                  { label: "Processing",   raw: orders.filter(o => o.status === "Processing").length, glow: "#fbbf24" },
+                  { label: "Shipped",      raw: orders.filter(o => o.status === "Shipped").length, glow: "#60a5fa" },
+                  { label: "Delivered",    raw: orders.filter(o => o.status === "Delivered").length, glow: "#4ade80" },
+                ].map((s, i) => (
+                  <div className="ap-stat" key={i} style={{ animationDelay: `${i * 0.07}s` }}>
+                    <div className="ap-stat-glow" style={{ background: s.glow }} />
+                    <div className="ap-stat-val"><StatValue value={s.raw} /></div>
+                    <div className="ap-stat-label">{s.label}</div>
+                  </div>
+                ))}
+              </div>
+
               <div className="ap-toolbar">
                 {["All","Processing","Shipped","Delivered","Cancelled"].map(f => (
                   <button key={f} className={`ap-btn ${orderFilter === f ? "ap-btn-gold" : "ap-btn-ghost"} ap-btn-sm`} onClick={() => setOrderFilter(f)}>{f}</button>
                 ))}
               </div>
-              <div className="ap-card" style={{ padding: 0, overflow: "hidden" }}>
-                <table className="ap-table">
-                  <thead>
-                    <tr>
-                      <th style={{ paddingLeft: 24 }}>Order ID</th>
-                      <th>Customer</th>
-                      <th>Product</th>
-                      <th>Amount</th>
-                      <th>Date</th>
-                      <th>Status</th>
-                      <th style={{ paddingRight: 24 }}>Update</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {filteredOrders.map((o, i) => (
-                      <tr key={o.id} className="ap-row-in" style={{ animationDelay: `${Math.min(i * 0.04, 0.5)}s` }}>
-                        <td style={{ paddingLeft: 24, color: "var(--gold)", fontWeight: 600, fontSize: "0.8rem" }}>{o.id}</td>
-                        <td>{o.customer}</td>
-                        <td style={{ color: "var(--text-dim)", fontSize: "0.8rem", maxWidth: 160 }}>{o.product}</td>
-                        <td style={{ color: "var(--gold-light)", fontWeight: 600 }}>{fmtMoney(o.amount)}</td>
-                        <td style={{ color: "var(--text-dim)", fontSize: "0.78rem" }}>{o.date}</td>
-                        <td>
-                          <span className="ap-badge" style={{ background: `${STATUS_COLOR[o.status]}22`, color: STATUS_COLOR[o.status], border: `1px solid ${STATUS_COLOR[o.status]}44` }}>{o.status}</span>
-                        </td>
-                        <td style={{ paddingRight: 24 }}>
-                          <select
-                            value={o.status}
-                            onChange={e => updateOrderStatus(o.id, e.target.value)}
-                            style={{ background: "var(--surface)", border: "1px solid var(--border)", color: "var(--text)", borderRadius: 4, padding: "4px 8px", fontSize: "0.75rem", cursor: "pointer" }}
-                          >
-                            {["Processing","Shipped","Delivered","Cancelled"].map(s => <option key={s} value={s}>{s}</option>)}
-                          </select>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                {filteredOrders.map((o, i) => {
+                  const isOpen = expandedOrder === o.id;
+                  const STEPS = ["Processing", "Shipped", "Delivered"];
+                  const stepIndex = o.status === "Cancelled" ? -1 : STEPS.indexOf(o.status);
+                  const thumbItems = o.items && o.items.length > 0 ? o.items : [{ name: o.product, image: null, qty: 1, price: o.amount }];
+
+                  return (
+                    <div
+                      key={o.id}
+                      className="ap-order-card ap-row-in"
+                      style={{ animationDelay: `${Math.min(i * 0.04, 0.5)}s` }}
+                    >
+                      {/* ── Header bar ── */}
+                      <div className="ap-order-header">
+                        <div className="ap-order-header-left">
+                          <span className="ap-order-id">{typeof o.id === "string" && o.id.startsWith("ORD") ? o.id : `#${String(o.id).slice(-6).toUpperCase()}`}</span>
+                          <span className="ap-order-date">Placed on {o.date}</span>
+                        </div>
+                        <span className="ap-badge" style={{ background: `${STATUS_COLOR[o.status] || "#999"}22`, color: STATUS_COLOR[o.status] || "#999", border: `1px solid ${STATUS_COLOR[o.status] || "#999"}44` }}>
+                          {o.status}
+                        </span>
+                      </div>
+
+                      {/* ── Body: thumbnails + customer + amount ── */}
+                      <div className="ap-order-body" onClick={() => setExpandedOrder(isOpen ? null : o.id)}>
+                        <div className="ap-order-thumbs">
+                          {thumbItems.slice(0, 3).map((it, idx) => (
+                            it.image
+                              ? <img key={idx} src={it.image} alt={it.name} className="ap-order-thumb" />
+                              : <div key={idx} className="ap-order-thumb ap-order-thumb-fallback">🧵</div>
+                          ))}
+                          {thumbItems.length > 3 && (
+                            <div className="ap-order-thumb ap-order-thumb-more">+{thumbItems.length - 3}</div>
+                          )}
+                        </div>
+
+                        <div className="ap-order-info">
+                          <div className="ap-order-product-line">{o.product}</div>
+                          <div className="ap-order-customer-line">
+                            <span style={{ color: "var(--gold)" }}>{o.customer}</span>
+                            {o.city && <span style={{ color: "var(--text-dim)" }}> · {o.city}</span>}
+                          </div>
+                        </div>
+
+                        <div className="ap-order-amount">{fmtMoney(o.amount)}</div>
+
+                        <button className="ap-order-expand-btn" onClick={(e) => { e.stopPropagation(); setExpandedOrder(isOpen ? null : o.id); }}>
+                          {isOpen ? "▲" : "▼"}
+                        </button>
+                      </div>
+
+                      {/* ── Status tracker (always visible, Amazon-style) ── */}
+                      {o.status !== "Cancelled" ? (
+                        <div className="ap-order-tracker">
+                          {STEPS.map((s, si) => (
+                            <div key={s} className="ap-order-tracker-step">
+                              <div className={`ap-order-tracker-dot ${si <= stepIndex ? "done" : ""}`}>
+                                {si <= stepIndex ? "✓" : si + 1}
+                              </div>
+                              <span className={`ap-order-tracker-label ${si <= stepIndex ? "done" : ""}`}>{s}</span>
+                              {si < STEPS.length - 1 && <div className={`ap-order-tracker-line ${si < stepIndex ? "done" : ""}`} />}
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="ap-order-cancelled-bar">✕ This order was cancelled</div>
+                      )}
+
+                      {/* ── Expanded detail panel ── */}
+                      {isOpen && (
+                        <div className="ap-order-expanded">
+                          <div className="ap-order-expanded-grid">
+                            <div>
+                              <div className="ap-order-expanded-label">Items in this order</div>
+                              {thumbItems.map((it, idx) => (
+                                <div key={idx} className="ap-order-item-row">
+                                  {it.image
+                                    ? <img src={it.image} alt={it.name} className="ap-order-item-img" />
+                                    : <div className="ap-order-item-img ap-order-thumb-fallback">🧵</div>
+                                  }
+                                  <div style={{ flex: 1 }}>
+                                    <div style={{ fontSize: "0.82rem", color: "var(--text)" }}>{it.name}</div>
+                                    <div style={{ fontSize: "0.72rem", color: "var(--text-dim)" }}>
+                                      Qty: {it.qty || 1}{it.size ? ` · Size: ${it.size}` : ""}{it.color ? ` · ${it.color}` : ""}
+                                    </div>
+                                  </div>
+                                  <div style={{ fontSize: "0.82rem", color: "var(--gold-light)", fontWeight: 600 }}>{fmtMoney(it.price || 0)}</div>
+                                </div>
+                              ))}
+                            </div>
+                            <div>
+                              <div className="ap-order-expanded-label">Delivery Address</div>
+                              <p style={{ fontSize: "0.8rem", color: "var(--text-dim)", lineHeight: 1.6 }}>
+                                {o.address || "Address not provided"}
+                              </p>
+                              <div className="ap-order-expanded-label" style={{ marginTop: 14 }}>Update Status</div>
+                              <select
+                                value={o.status}
+                                onChange={e => updateOrderStatus(o.id, e.target.value)}
+                                className="ap-order-status-select"
+                              >
+                                {["Processing","Shipped","Delivered","Cancelled"].map(s => (
+                                  <option key={s} value={s} style={{ background: "#1a1108", color: "#f0e8d8" }}>{s}</option>
+                                ))}
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+
+                {filteredOrders.length === 0 && (
+                  <div className="ap-card" style={{ textAlign: "center", padding: 40, color: "var(--text-dim)" }}>
+                    No orders found for this filter.
+                  </div>
+                )}
               </div>
             </>
           )}
@@ -1099,8 +1345,42 @@ function ProductModal({ product, onSave, onClose }) {
     tags: product?.tags?.join(", ") || "",
     desc: product?.desc || "",
   });
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState("");
 
   function set(k, v) { setForm(f => ({ ...f, [k]: v })); }
+
+  async function handleImageUpload(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    setUploading(true);
+    setUploadError("");
+
+    try {
+      const formData = new FormData();
+      formData.append("image", file);
+
+      // 👉 Replace YOUR_IMGBB_API_KEY with your free key from https://api.imgbb.com/
+      const IMGBB_API_KEY = "YOUR_IMGBB_API_KEY";
+
+      const res = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
+        method: "POST",
+        body: formData,
+      });
+      const result = await res.json();
+
+      if (result.success) {
+        set("img", result.data.url);
+      } else {
+        setUploadError("Upload failed. Check your ImgBB API key.");
+      }
+    } catch (err) {
+      setUploadError("Upload failed: " + err.message);
+    } finally {
+      setUploading(false);
+    }
+  }
 
   function handleSave() {
     if (!form.name || !form.price) return;
@@ -1155,8 +1435,33 @@ function ProductModal({ product, onSave, onClose }) {
           </div>
         </div>
         <div className="ap-form-row">
-          <label className="ap-form-label">Image URL</label>
-          <input className="ap-form-input" value={form.img} onChange={e => set("img", e.target.value)} placeholder="https://…" />
+          <label className="ap-form-label">Product Image</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            className="ap-form-input"
+            style={{ padding: "8px 13px", cursor: "pointer" }}
+          />
+          {uploading && (
+            <p style={{ fontSize: "0.75rem", color: "var(--gold)", marginTop: 6 }}>
+              ⏳ Uploading image…
+            </p>
+          )}
+          {uploadError && (
+            <p style={{ fontSize: "0.75rem", color: "#f87171", marginTop: 6 }}>
+              ❌ {uploadError}
+            </p>
+          )}
+          {form.img && !uploading && (
+            <div style={{ marginTop: 10 }}>
+              <img
+                src={form.img}
+                alt="Preview"
+                style={{ width: 100, height: 100, objectFit: "cover", borderRadius: 8, border: "1px solid rgba(201,168,76,0.3)" }}
+              />
+            </div>
+          )}
         </div>
         <div className="ap-form-row">
           <label className="ap-form-label">Tags (comma-separated)</label>
@@ -1167,9 +1472,14 @@ function ProductModal({ product, onSave, onClose }) {
           <textarea className="ap-form-input" rows={3} value={form.desc} onChange={e => set("desc", e.target.value)} placeholder="A brief description of the saree…" style={{ resize: "vertical" }} />
         </div>
         <div style={{ display: "flex", gap: 10, marginTop: 6 }}>
-          <button className="ap-btn ap-btn-ghost" style={{ flex: 1 }} onClick={onClose}>Cancel</button>
-          <button className="ap-btn ap-btn-gold" style={{ flex: 1 }} onClick={handleSave}>
-            {product ? "Save Changes" : "Add Product"}
+          <button className="ap-btn ap-btn-ghost" style={{ flex: 1, color: "#E8C97A" }} onClick={onClose}>Cancel</button>
+          <button
+            className="ap-btn ap-btn-gold"
+            style={{ flex: 1, opacity: uploading ? 0.5 : 1, cursor: uploading ? "not-allowed" : "pointer" }}
+            onClick={handleSave}
+            disabled={uploading}
+          >
+            {uploading ? "Please wait…" : product ? "Save Changes" : "Add Product"}
           </button>
         </div>
       </div>

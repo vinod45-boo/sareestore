@@ -985,6 +985,24 @@ export default function SareeStore({ onGoToHome }) {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg>
               {cartCount > 0 && <span className="c-badge">{cartCount}</span>}
             </button>
+            <button
+              className="c-cart-btn"
+              title="Logout"
+              onClick={() => {
+                localStorage.removeItem("weaversUser");
+                if (onGoToHome) {
+                  onGoToHome();
+                } else {
+                  window.location.reload();
+                }
+              }}
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
+                <path d="M16 17l5-5-5-5"/>
+                <path d="M21 12H9"/>
+              </svg>
+            </button>
           </div>
         </nav>
 

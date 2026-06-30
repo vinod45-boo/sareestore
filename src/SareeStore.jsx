@@ -197,6 +197,15 @@ export default function SareeStore({ onGoToHome }) {
   const [appliedCoupon, setAppliedCoupon] = useState(null);
   const [couponError, setCouponError] = useState("");
   const [priceRange, setPriceRange] = useState([0, 25000]);
+  const maxProductPrice = useMemo(() => {
+    const max = Math.max(25000, ...PRODUCTS.map(p => p.price || 0));
+    return max;
+  }, [PRODUCTS]);
+
+  // Keep price filter wide enough to include every product (incl. admin-added high-price ones)
+  useEffect(() => {
+    setPriceRange(prev => prev[1] < maxProductPrice ? [prev[0], maxProductPrice] : prev);
+  }, [maxProductPrice]);
   const [occasionFilter, setOccasionFilter] = useState("");
   const [activeTab, setActiveTab] = useState("desc");
   const [toast, setToast] = useState(null);

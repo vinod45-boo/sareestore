@@ -365,15 +365,54 @@ export default function SareeStore({ onGoToHome }) {
     });
   };
 
-  const pay = () => {
+  const pay = async () => {
     if (!form.name.trim() || !form.address.trim() || !form.city.trim()) { alert("Please fill in your name, address and city."); return; }
     setStep("processing");
     const orderDate = new Date();
     const deliveryDate = new Date();
     deliveryDate.setDate(deliveryDate.getDate() + 5);
+
+    const itemsToOrder = cartOpen ? cart : [{ ...activeProduct, qty, size: selectedSize, color: selectedColor, blouse: blouseIncluded }];
+    const orderTotal = cartOpen ? cartTotal - discount : activeProduct.price * qty;
+
+    const newOrder = {
+      items: itemsToOrder,
+      total: orderTotal,
+      orderDate: fmtDate(orderDate),
+      deliveryDate: fmtDate(deliveryDate),
+      city: form.city,
+      address: `${form.address}, ${form.city}${form.pin ? " - " + form.pin : ""}`,
+      status: "Confirmed",
+    };
+
+    // Save order to backend so it shows up in Admin Panel
+    try {
+      await fetch("https://weavers-backend.onrender.com/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          customerName: form.name,
+          items: itemsToOrder.map(it => ({
+            name: it.name,
+            price: it.price,
+            qty: it.qty || 1,
+            size: it.size || "",
+            color: it.color || "",
+            blouse: !!it.blouse,
+            image: it.img,
+          })),
+          amount: orderTotal,
+          address: `${form.address}, ${form.city}${form.pin ? " - " + form.pin : ""}`,
+          city: form.city,
+          deliveryDate,
+        }),
+      });
+    } catch (err) {
+      console.warn("Order backend save failed (showing locally only):", err.message);
+    }
+
     setTimeout(() => {
-      const itemsToOrder = cartOpen ? cart : [{ ...activeProduct, qty, size: selectedSize, color: selectedColor, blouse: blouseIncluded }];
-      setOrders(prev => [{ items: itemsToOrder, total: cartOpen ? cartTotal - discount : activeProduct.price * qty, orderDate: fmtDate(orderDate), deliveryDate: fmtDate(deliveryDate), city: form.city, address: `${form.address}, ${form.city}${form.pin ? " - " + form.pin : ""}`, status: "Confirmed" }, ...prev]);
+      setOrders(prev => [newOrder, ...prev]);
       if (cartOpen) setCart([]);
       setStep("success");
     }, 1500);
